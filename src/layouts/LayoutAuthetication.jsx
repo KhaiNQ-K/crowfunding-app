@@ -11,9 +11,9 @@ function LayoutAuthetication({ children, heading = "" }) {
       </Link>
       <div
         className="w-full max-w-[556px] px-5 py-8 lg:px-14 
-        lg:py-16 bg-white mx-auto text-center rounded-xl"
+        lg:py-16 bg-white mx-auto  rounded-xl"
       >
-        <h1 className="font-semibold text-text1 text-lg lg:text-xl mb-1 lg:mb-3">
+        <h1 className="font-semibold text-center text-text1 text-lg lg:text-xl mb-1 lg:mb-3">
           {heading}
         </h1>
         {children}

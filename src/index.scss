@@ -4,8 +4,7 @@
 
 @layer base {
   body {
-    @apply font-primary text-base;
-    box-sizing: border-box;
+    @apply font-primary text-base font-normal;
   }
   input {
     @apply outline-none;
