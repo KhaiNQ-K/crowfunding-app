@@ -10,3 +10,6 @@
     @apply outline-none;
   }
 }
+input:focus + .error-focus {
+  display: none;
+}
