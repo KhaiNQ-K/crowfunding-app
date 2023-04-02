@@ -1,9 +1,15 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { useController } from "react-hook-form";
 import { classNames } from "utils";
 
-export function Input({ control, name, type = "text", error, ...rest }) {
+export function Input({
+  control,
+  name,
+  type = "text",
+  error,
+  children,
+  ...rest
+}) {
   const { field } = useController({ control, name, defaultValue: "" });
   const newRest = {
     ...rest,
@@ -18,13 +24,20 @@ export function Input({ control, name, type = "text", error, ...rest }) {
         {...field}
         {...newRest}
         className={classNames(
-          "w-full  py-4 px-6 border  rounded-xl text-sm font-medium text-text1 placeholder:text-tex4",
-          error?.length > 0 ? "border-error" : "border-strock"
+          "w-full  py-4 px-6 border  rounded-xl text-sm font-medium text-text1 placeholder:text-tex4 dark:placeholder:text-text2 dark:text-white",
+          error?.length > 0 ? "border-error" : "border-strock",
+          children ? "pr-16" : "",
+          "bg-transparent dark:border-darkStroke"
         )}
       />
       {error?.length > 0 && (
         <span className="text-sm font-medium text-error absolute top-2/4 -translate-y-2/4 left-6 pointer-events-none error-focus">
           {error}
+        </span>
+      )}
+      {children && (
+        <span className="absolute top-2/4 -translate-y-2/4 right-6  cursor-pointer select-none text-text2">
+          {children}
         </span>
       )}
     </div>
@@ -36,4 +49,5 @@ Input.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   error: PropTypes.string,
+  children: PropTypes.node,
 };

@@ -7,7 +7,7 @@ export function Label({ children, htmlFor, className = "" }) {
     <label
       htmlFor={htmlFor}
       className={classNames(
-        "text-sm font-medium text-text2 cursor-pointer inline-block",
+        "text-sm font-medium text-text2 cursor-pointer inline-block dark:text-text3 ",
         className
       )}
     >

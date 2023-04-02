@@ -1,14 +1,15 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { CheckBox } from "components/checkbox";
 import { FormGroup } from "components/common";
+import { IconEyeToggle } from "components/icons";
 import { Input } from "components/Input";
 import { Label } from "components/label";
+import { useToggleValues } from "hooks";
 import LayoutAuthetication from "layouts/LayoutAuthetication";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 const schema = yup.object({
   fullname: yup.string("").required("This field is required"),
   email: yup
@@ -33,11 +34,8 @@ function SignUpPage() {
     e.preventDefault();
     console.log(data);
   };
-  const [acceptTerm, setAcceptTerm] = useState(false);
-  const handleToggleTerm = (e) => {
-    setAcceptTerm(!acceptTerm);
-  };
-  console.log(errors);
+  const [acceptTerm, handleToggleTerm] = useToggleValues(false);
+  const [showPassword, handleTogglePassword] = useToggleValues(false);
   return (
     <LayoutAuthetication heading="Sign Up">
       <p className="font-normal text-xs text-center lg:text-sm text-text3 px-3 py-8 ">
@@ -49,11 +47,11 @@ function SignUpPage() {
           Sign in
         </Link>
       </p>
-      <button className="w-full  flex  gap-x-3  items-center justify-center mb-5 py-3 border border-strock rounded-xl text-text2 text-base font-semibold">
+      <button className="w-full  flex  gap-x-3  items-center justify-center mb-5 py-3 border border-strock rounded-xl text-text2 text-base font-semibold dark:border-darkStoke dark:text-white">
         <img src="/img/icon-google.png" alt="" />
         <span>Sign up with google</span>
       </button>
-      <p className="text-center text-xs lg:text-sm font-normal px-2 py-2 mb-4 lg:mb-8 text-text2">
+      <p className="text-center text-xs lg:text-sm font-normal px-2 py-2 mb-4 lg:mb-8 text-text2 dark:text-white">
         Or sign up with email
       </p>
       <form onSubmit={handleSubmit(handleSignUp)}>
@@ -81,13 +79,19 @@ function SignUpPage() {
           <Input
             control={control}
             name="password"
+            type={`${showPassword ? "text" : "password"}`}
             error={errors.password?.message}
             placeholder="Create a password"
-          />
+          >
+            <IconEyeToggle
+              toggled={showPassword}
+              onToggle={handleTogglePassword}
+            />
+          </Input>
         </FormGroup>
 
         <CheckBox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-          <p className="text-sm tex-text2 flex-1">
+          <p className="tex-text2 flex-1 dark:text-text3 text-xs lg:text-sm">
             I agree to the{" "}
             <span className="text-secondary underline">Terms of Use</span> and
             have read and understand the

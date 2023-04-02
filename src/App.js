@@ -1,3 +1,4 @@
+import SignInPage from "pages/SignInPage";
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/" element={<div>Hello</div>} />
+        <Route path="/sign-in" element={<SignInPage />} />
       </Routes>
     </Suspense>
   );
