@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useController } from "react-hook-form";
+import { classNames } from "utils";
 
 export function Input({ control, name, type = "text", error, ...rest }) {
   const { field } = useController({ control, name, defaultValue: "" });
@@ -16,9 +17,10 @@ export function Input({ control, name, type = "text", error, ...rest }) {
         id={name}
         {...field}
         {...newRest}
-        className={`w-full  py-4 px-6 border  rounded-xl text-sm font-medium text-text1 placeholder:text-tex4 ${
+        className={classNames(
+          "w-full  py-4 px-6 border  rounded-xl text-sm font-medium text-text1 placeholder:text-tex4",
           error?.length > 0 ? "border-error" : "border-strock"
-        }`}
+        )}
       />
       {error?.length > 0 && (
         <span className="text-sm font-medium text-error absolute top-2/4 -translate-y-2/4 left-6 pointer-events-none error-focus">
