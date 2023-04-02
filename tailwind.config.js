@@ -13,7 +13,7 @@ module.exports = {
         darkSecondary: "#1C1C24",
         softDark: "#22222C",
         darkSoft: "#24242C",
-        darkStoke: "#3A3A43",
+        darkStroke: "#3A3A43",
         darkRed: "#422C32",
         text1: "#171725",
         text2: "#4B5264",

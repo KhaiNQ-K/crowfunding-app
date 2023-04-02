@@ -10,13 +10,15 @@ export function CheckBox({
   return (
     <div className="flex items-start gap-x-5">
       <div
-        className={`inline-flex items-center justify-center p-1 text-white w-5 h-5 rounded border cursor-pointer  ${
-          checked ? "bg-primary border-primary" : "border-strock"
+        className={`inline-flex items-center justify-center p-1 text-white  w-5 h-5 rounded border select-none cursor-pointer  ${
+          checked
+            ? "bg-primary border-primary "
+            : "border-strock dark:border-text3 "
         }`}
         onClick={onClick}
       >
         <input type="checkbox" className="hidden" name={name} />
-        <span>
+        <span className={`${checked ? "" : "opacity-0 invisible"}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
