@@ -1,16 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import LayoutAuthetication from "layouts/LayoutAuthetication";
-import { Link } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { FormGroup } from "components/common";
-import { Label } from "components/label";
-import { Input } from "components/Input";
 import { IconEyeToggle } from "components/icons";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { Input } from "components/Input";
+import { Label } from "components/label";
 import { useToggleValues } from "hooks";
+import LayoutAuthetication from "layouts/LayoutAuthetication";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
 const schema = yup.object({
   email: yup
     .string("")
